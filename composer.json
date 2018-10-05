@@ -1,0 +1,20 @@
+{
+  "name": "ifnot/vue-data-sync",
+  "homepage": "https://github.com/Ifnot/vue-data-sync-laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Favre Anael",
+      "email": "anael.favre@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Ifnot/vue-data-sync-laravel/issues"
+  },
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Ifnot\\VueDataSync\\": "src"
+    }
+  }
+}
