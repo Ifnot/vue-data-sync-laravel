@@ -2,7 +2,7 @@
 
 namespace Ifnot\VueDataSync;
 
-use Ifnot\EloquentVuex\Vuex\Store;
+use Ifnot\VueDataSync\Vuex\ModelSynchronizer;
 use Illuminate\Database\Eloquent\Model;
 
 class Helper
@@ -38,18 +38,23 @@ class Helper
     /**
      * Get the related models of a given model.
      */
-    protected static function getRelatedModels(Model $model): array
+    public static function getRelatedModels(Model $model): array
     {
         $relatedModels = [];
 
-        $store = $model->store ? new $model->store($model) : new Store($model);
+        $synchronizer = self::getModelSynchronizer($model);
 
-        foreach ($store->getCascadeRelations() as $method) {
+        foreach ($synchronizer->getCascadeRelations() as $method) {
             foreach ($model->$method()->get() as $relatedModel) {
                 $relatedModels[] = $relatedModel;
             }
         }
 
         return $relatedModels;
+    }
+
+    public static function getModelSynchronizer(Model $model)
+    {
+        return $model->synchronizer ? new $model->synchronizer($model) : new ModelSynchronizer($model);
     }
 }

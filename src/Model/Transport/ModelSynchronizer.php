@@ -34,8 +34,7 @@ class ModelSynchronizer
     public function getName(): string
     {
         $baseClassName = basename(str_replace('\\', '/', $this->class));
-
-        return str_plural(snake_case($baseClassName));
+        return str_singular(snake_case($baseClassName));
     }
 
     /**
@@ -98,7 +97,7 @@ class ModelSynchronizer
 
     private function handleUpdateEmit($meta)
     {
-        $originalChannels = $this->getSynchronizer($this->getOriginal())->getChannels();
+        $originalChannels = Helper::getModelSynchronizer($this->getOriginal())->getChannels();
         $channels = $this->getChannels();
 
         $originalChannelWithKey = [];
@@ -132,15 +131,10 @@ class ModelSynchronizer
         $synchronizers = [];
 
         foreach (array_merge(Helper::getCascadeRelatedModels($this->model), Helper::getCascadeRelatedModels($this->getOriginal())) as $relatedModel) {
-            $synchronizers[] = $this->getSynchronizer($relatedModel);
+            $synchronizers[] = Helper::getModelSynchronizer($relatedModel);
         }
 
         return $synchronizers;
-    }
-
-    private function getSynchronizer($model)
-    {
-        return $model->synchronizer ? new $model->synchronizer($model) : new ModelSynchronizer($model);
     }
 
     private function getOriginal()
