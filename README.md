@@ -41,9 +41,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-## Setup your client
-
-Go to the client-side project for VueJS here : https://github.com/Ifnot/vue-data-sync
+Now, you can [setup the client side (VueJs)](https://github.com/Ifnot/vue-data-sync)
 
 ## Fine tuning
 
