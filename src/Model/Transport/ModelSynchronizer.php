@@ -29,7 +29,7 @@ class ModelSynchronizer
     }
 
     /**
-     * Return the frontend name of the store
+     * Return the frontend name of the model (VueJS side)
      */
     public function getName(): string
     {
