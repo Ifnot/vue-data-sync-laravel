@@ -16,5 +16,12 @@
     "psr-4": {
       "Ifnot\\VueDataSync\\": "src"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ifnot\\VueDataSync\\Providers\\VueDataSyncServiceProvider"
+      ]
+    }
   }
 }
