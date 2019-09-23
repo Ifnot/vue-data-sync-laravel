@@ -23,5 +23,8 @@
         "Ifnot\\VueDataSync\\Providers\\VueDataSyncServiceProvider"
       ]
     }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^3.8"
   }
 }
