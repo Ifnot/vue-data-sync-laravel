@@ -6,6 +6,7 @@ use Ifnot\VueDataSync\Helper;
 use Ifnot\VueDataSync\Events\ModelEvent;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class ModelSynchronizer
 {
@@ -34,7 +35,7 @@ class ModelSynchronizer
     public function getName(): string
     {
         $baseClassName = basename(str_replace('\\', '/', $this->class));
-        return str_singular(snake_case($baseClassName));
+        return Str::singular(Str::snake($baseClassName));
     }
 
     /**
