@@ -3,9 +3,9 @@
 namespace Ifnot\VueDataSync\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class ModelEvent implements ShouldBroadcast
+class ModelEvent implements ShouldBroadcastNow
 {
     private $modelName;
     private $event;
