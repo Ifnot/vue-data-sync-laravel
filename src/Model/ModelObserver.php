@@ -21,6 +21,11 @@ class ModelObserver
      */
     public function created(Model $model)
     {
+        // When creating a model, we must rely on database attributes instead of mass aligned attributes.
+        // It allows us to fill object attributes when database has default values (php does not know this
+        // attributes exists when only creating the model)
+        $model->refresh();
+        
         $this->fire($model, 'create');
     }
 
